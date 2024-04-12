@@ -15,7 +15,7 @@ public class Main {
                 tabuleiroDaVelha[i][j] = String.valueOf (counter++);
             }
         }
-        do{
+        while (verificaTabuleiro.temVelha(tabuleiroDaVelha)){
 
             verificaTabuleiro.exibeTabuleiro(tabuleiroDaVelha);
             System.out.println("Escolha uma posição para o 'X': ");
@@ -28,7 +28,14 @@ public class Main {
                     }
                 }
             }
+
             verificaTabuleiro.exibeTabuleiro(tabuleiroDaVelha);
+
+            if(verificaTabuleiro.naHorizontal("X", tabuleiroDaVelha) ||
+            verificaTabuleiro.naVertical("X", tabuleiroDaVelha) ||
+            verificaTabuleiro.naSemiCruzDirEsq("X", tabuleiroDaVelha) ||
+            verificaTabuleiro.naSemiCruzEsqDir("X", tabuleiroDaVelha)) break;
+
 
             System.out.println("Escolha uma posição para o 'Y': ");
             String playerY = scanner.nextLine();
@@ -42,21 +49,15 @@ public class Main {
             }
             verificaTabuleiro.exibeTabuleiro(tabuleiroDaVelha);
 
-//            tabuleiroDaVelha[1][1] = "T";
-//            tabuleiroDaVelha[2][2] = "T";
-//
-//            tabuleiroDaVelha[0][1] = "O";
-//            tabuleiroDaVelha[0][2] = "0";
-//            tabuleiroDaVelha[1][2] = "0";
-//
-//            tabuleiroDaVelha[1][0] = "F";
-//            tabuleiroDaVelha[2][1] = "F";
-//            tabuleiroDaVelha[2][0] = "F";
 
-            //verificaTabuleiro.exibeTabuleiroVazio(tabuleiroDaVelha);
+            if(verificaTabuleiro.naHorizontal("Y", tabuleiroDaVelha) ||
+                    verificaTabuleiro.naVertical("Y", tabuleiroDaVelha) ||
+                    verificaTabuleiro.naSemiCruzDirEsq("Y", tabuleiroDaVelha) ||
+                    verificaTabuleiro.naSemiCruzEsqDir("Y", tabuleiroDaVelha)) break;
 
 
-        }while (verificaTabuleiro.temVelha(tabuleiroDaVelha));
+
+        }
 
     }
 
